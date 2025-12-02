@@ -606,7 +606,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
               builder: (context, chatProvider, _) {
                 return _buildSettingCard(
                   title: 'Connection Status',
-                  description: 'Current connection to Claude Code CLI',
+                  description: 'Current connection to DeepClaude CLI',
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -1398,7 +1398,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Color(0xFF1a1a1a)),
                     ),
                     const SizedBox(height: 8),
-                    Text('Select a provider for Claude Code', style: TextStyle(fontSize: 13, color: Colors.grey[600])),
+                    Text('Select a provider for DeepClaude', style: TextStyle(fontSize: 13, color: Colors.grey[600])),
                     const SizedBox(height: 16),
                     ...manager.providers.map((provider) {
                       final isSelected = manager.currentProvider?.id == provider.id;

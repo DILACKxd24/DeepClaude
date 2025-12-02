@@ -113,7 +113,7 @@ class AcpConnection {
 
   String? _currentMessageId;
 
-  /// 连接到 Claude Code ACP
+  /// 连接到 DeepClaude ACP
   Future<void> connect({String? workingDir}) async {
     if (_process != null) {
       await disconnect();
@@ -160,7 +160,7 @@ class AcpConnection {
         print('[ACP] Process exited with code: $code');
         if (_state != AcpConnectionState.disconnected) {
           _updateState(AcpConnectionState.disconnected);
-          onError?.call('Claude Code 进程已退出 (code: $code)');
+          onError?.call('DeepClaude 进程已退出 (code: $code)');
         }
       });
 
@@ -168,7 +168,7 @@ class AcpConnection {
       await Future.delayed(const Duration(milliseconds: 500));
 
       if (_process == null) {
-        throw Exception('Failed to start Claude Code process');
+        throw Exception('Failed to start DeepClaude process');
       }
 
       print('[ACP] Process started with PID: ${_process!.pid}');

@@ -26,7 +26,7 @@ class AppStrings {
   static String general(AppLanguage lang) => _t(lang, 'General', '通用', '一般');
   static String account(AppLanguage lang) => _t(lang, 'Account', '账户', 'アカウント');
   static String privacy(AppLanguage lang) => _t(lang, 'Privacy', '隐私', 'プライバシー');
-  static String claudeCode(AppLanguage lang) => _t(lang, 'Claude Code', 'Claude Code', 'Claude Code');
+  static String claudeCode(AppLanguage lang) => _t(lang, 'DeepClaude', 'DeepClaude', 'DeepClaude');
   static String model(AppLanguage lang) => _t(lang, 'Model', '模型', 'モデル');
   static String desktopApp(AppLanguage lang) => _t(lang, 'Desktop app', '桌面应用', 'デスクトップアプリ');
   static String extensions(AppLanguage lang) => _t(lang, 'Extensions', '扩展', '拡張機能');

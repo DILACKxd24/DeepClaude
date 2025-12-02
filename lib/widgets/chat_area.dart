@@ -482,7 +482,7 @@ class _ChatAreaState extends State<ChatArea> {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              'Claude Code',
+                              'DeepClaude',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,

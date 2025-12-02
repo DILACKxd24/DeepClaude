@@ -132,10 +132,10 @@ class ProviderManager extends ChangeNotifier {
     await _saveProviders();
   }
 
-  /// 应用供应商配置到 Claude Code
+  /// 应用供应商配置到 DeepClaude
   Future<void> _applyProviderConfig(ProviderConfig provider) async {
     try {
-      // 获取 Claude Code 配置目录
+      // 获取 DeepClaude 配置目录
       final homeDir = Platform.environment['HOME'] ?? '';
       final claudeConfigDir = Directory('$homeDir/.claude');
       
@@ -166,7 +166,7 @@ class ProviderManager extends ChangeNotifier {
     }
   }
 
-  /// 获取当前 Claude Code 配置
+  /// 获取当前 DeepClaude 配置
   Future<Map<String, dynamic>?> getCurrentClaudeConfig() async {
     try {
       final homeDir = Platform.environment['HOME'] ?? '';

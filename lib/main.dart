@@ -24,7 +24,7 @@ void main() async {
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
     titleBarStyle: TitleBarStyle.hidden,
-    title: 'Claude Code',
+    title: 'DeepClaude',
   );
 
   windowManager.waitUntilReadyToShow(windowOptions, () async {
@@ -32,11 +32,11 @@ void main() async {
     await windowManager.focus();
   });
 
-  runApp(const ClaudeCodeApp());
+  runApp(const DeepClaudeApp());
 }
 
-class ClaudeCodeApp extends StatelessWidget {
-  const ClaudeCodeApp({super.key});
+class DeepClaudeApp extends StatelessWidget {
+  const DeepClaudeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class ClaudeCodeApp extends StatelessWidget {
           final accentColor = _parseColor(settingsProvider.accentColor);
           
           return MaterialApp(
-            title: 'Claude Code',
+            title: 'DeepClaude',
             debugShowCheckedModeBanner: false,
             themeMode: themeMode,
             theme: _buildLightTheme(accentColor),

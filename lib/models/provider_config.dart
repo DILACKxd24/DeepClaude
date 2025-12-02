@@ -1,4 +1,4 @@
-/// Claude Code 供应商配置
+/// DeepClaude 供应商配置
 
 class ProviderConfig {
   final String id;

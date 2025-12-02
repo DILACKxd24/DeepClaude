@@ -11,7 +11,7 @@ import '../widgets/chat_area.dart';
 import '../widgets/title_bar.dart';
 import '../widgets/file_preview_panel.dart';
 import '../widgets/settings_panel.dart';
-import '../widgets/mcp_menu.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-/// 欢迎页面 - TDesign 风格
+/// 欢迎页面 - Claude 风格
 class WelcomeView extends StatefulWidget {
   final VoidCallback? onOpenMcpSettings;
   
@@ -243,55 +243,53 @@ class _WelcomeViewState extends State<WelcomeView> {
     });
   }
 
+  bool _showMcpMenu = false;
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final accentColor = Theme.of(context).colorScheme.primary;
+    // Claude 风格的暖色背景
+    final bgColor = isDark ? const Color(0xFF1A1816) : const Color(0xFFF5F1EB);
+    final cardColor = isDark ? const Color(0xFF2A2724) : Colors.white;
+    final textColor = isDark ? const Color(0xFFE8E4DE) : const Color(0xFF3D3929);
+    final hintColor = isDark ? const Color(0xFF8A8680) : const Color(0xFF9A9590);
+    final borderColor = isDark ? const Color(0xFF3A3734) : const Color(0xFFE5E0D8);
+    const accentOrange = Color(0xFFD97757);
     
     return Container(
-      color: isDark ? const Color(0xFF0D0D0D) : const Color(0xFFF5F5F5),
+      color: bgColor,
       child: Column(
         children: [
-          // 顶部状态栏
+          // 顶部右侧状态栏
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 16, right: 24),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: isDark ? const Color(0xFF333333) : const Color(0xFFE5E5E5),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(isDark ? 0.2 : 0.04),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
+                    color: cardColor,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: borderColor),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF00A870),
-                          shape: BoxShape.circle,
+                      Text(
+                        'Free plan',
+                        style: TextStyle(
+                          color: hintColor,
+                          fontSize: 12,
                         ),
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'DeepClaude Desktop',
+                        'Upgrade',
                         style: TextStyle(
-                          color: accentColor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
+                          color: textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -310,54 +308,41 @@ class _WelcomeViewState extends State<WelcomeView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // 欢迎语
-                    Column(
-                      children: [
-                        Text(
-                          '欢迎使用 DeepClaude',
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w600,
-                            color: isDark ? Colors.white : const Color(0xFF181818),
-                            letterSpacing: -0.5,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Start a conversation or select a project folder',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: isDark ? const Color(0xFF888888) : const Color(0xFF666666),
-                          ),
-                        ),
-                      ],
+                    Text(
+                      '欢迎使用 DeepClaude',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w500,
+                        color: textColor,
+                        letterSpacing: -0.5,
+                      ),
                     ),
 
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 32),
 
-                    // 输入框区域
+                    // 输入框区域 - Claude 风格
                     Container(
-                      width: 640,
+                      width: 520,
                       decoration: BoxDecoration(
-                        color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
+                        color: cardColor,
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: isDark ? const Color(0xFF333333) : const Color(0xFFE5E5E5),
-                        ),
+                        border: Border.all(color: borderColor),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
-                            blurRadius: 24,
-                            offset: const Offset(0, 8),
+                            color: Colors.black.withOpacity(0.03),
+                            blurRadius: 10,
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // 附件预览区域
                           if (_pendingAttachments.isNotEmpty)
                             Container(
-                              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                              padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                               child: Wrap(
                                 spacing: 8,
                                 runSpacing: 8,
@@ -377,167 +362,89 @@ class _WelcomeViewState extends State<WelcomeView> {
                           TextField(
                             controller: _inputController,
                             focusNode: _focusNode,
-                            maxLines: 8,
+                            maxLines: 4,
                             minLines: 2,
                             style: TextStyle(
                               fontSize: 15,
-                              color: isDark ? Colors.white : const Color(0xFF181818),
+                              color: textColor,
                               height: 1.5,
                             ),
                             decoration: InputDecoration(
-                              hintText: _pendingAttachments.isEmpty 
-                                  ? 'Ask anything or describe what you want to build...' 
-                                  : 'Add a message about the files...',
+                              hintText: 'How can I help you today?',
                               hintStyle: TextStyle(
-                                color: isDark ? const Color(0xFF666666) : const Color(0xFFBBBBBB),
+                                color: hintColor,
                                 fontSize: 15,
                               ),
                               border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(20),
+                              contentPadding: const EdgeInsets.fromLTRB(20, 18, 20, 12),
                             ),
                             onSubmitted: (_) => _startConversation(),
                           ),
 
                           // 底部工具栏
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                            decoration: BoxDecoration(
-                              border: Border(
-                                top: BorderSide(
-                                  color: isDark ? const Color(0xFF262626) : const Color(0xFFF0F0F0),
-                                ),
-                              ),
-                            ),
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 10),
                             child: Row(
                               children: [
-                                // 选择自定义工作目录按钮
-                                _ToolButton(
-                                  icon: Icons.folder_outlined,
-                                  tooltip: _useCustomDir
-                                      ? 'Working in: ${_customWorkingDir?.split('/').last ?? ""}'
-                                      : 'Select project folder',
-                                  isSelected: _useCustomDir,
-                                  isHighlighted: false,
-                                  onTap: _selectWorkingDir,
-                                ),
-                                const SizedBox(width: 6),
-                                // 附件按钮
-                                _ToolButton(
-                                  icon: Icons.attach_file_rounded,
-                                  tooltip: 'Attach files',
+                                // + 添加按钮
+                                _ClaudeIconButton(
+                                  child: Icon(Icons.add, size: 20, color: hintColor),
                                   onTap: _pickFiles,
                                 ),
-                                const SizedBox(width: 6),
-                                // MCP 连接器按钮
-                                McpMenuButton(
-                                  onManageConnectors: widget.onOpenMcpSettings,
+                                const SizedBox(width: 4),
+                                // 滑块调节按钮
+                                _ClaudeIconButton(
+                                  child: Icon(Icons.tune, size: 18, color: hintColor),
+                                  onTap: _selectWorkingDir,
+                                ),
+                                const SizedBox(width: 4),
+                                // 时钟按钮 (MCP)
+                                _ClaudeIconButton(
+                                  child: Icon(Icons.schedule_outlined, size: 18, color: hintColor),
+                                  onTap: () {
+                                    setState(() {
+                                      _showMcpMenu = !_showMcpMenu;
+                                    });
+                                  },
                                 ),
 
                                 const Spacer(),
 
-                                // 显示选中的自定义目录
-                                if (_useCustomDir && _customWorkingDir != null)
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                                    decoration: BoxDecoration(
-                                      color: accentColor.withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(color: accentColor.withOpacity(0.2)),
+                                // 模型选择器
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Sonnet 4.5',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: hintColor,
+                                      ),
                                     ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.folder_rounded, size: 14, color: accentColor),
-                                        const SizedBox(width: 6),
-                                        ConstrainedBox(
-                                          constraints: const BoxConstraints(maxWidth: 120),
-                                          child: Text(
-                                            _customWorkingDir!.split('/').last,
-                                            style: TextStyle(fontSize: 12, color: accentColor, fontWeight: FontWeight.w500),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _useCustomDir = false;
-                                              _customWorkingDir = null;
-                                            });
-                                          },
-                                          child: Icon(Icons.close_rounded, size: 14, color: accentColor),
-                                        ),
-                                      ],
+                                    Icon(
+                                      Icons.expand_more,
+                                      size: 18,
+                                      color: hintColor,
                                     ),
-                                  ),
-
-                                if (_useCustomDir && _customWorkingDir != null)
-                                  const SizedBox(width: 12),
-
-                                // 模型选择
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    color: isDark ? const Color(0xFF262626) : const Color(0xFFF5F5F5),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        width: 6,
-                                        height: 6,
-                                        decoration: BoxDecoration(
-                                          color: accentColor,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      Text(
-                                        'Claude Code',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                          color: isDark ? const Color(0xFFCCCCCC) : const Color(0xFF666666),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        size: 16,
-                                        color: isDark ? const Color(0xFF888888) : const Color(0xFF999999),
-                                      ),
-                                    ],
-                                  ),
+                                  ],
                                 ),
 
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 8),
 
-                                // 发送按钮
+                                // 发送按钮 - 橙红色圆角方形
                                 GestureDetector(
                                   onTap: _startConversation,
                                   child: Container(
-                                    width: 40,
-                                    height: 40,
+                                    width: 28,
+                                    height: 28,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [accentColor, accentColor.withOpacity(0.85)],
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: accentColor.withOpacity(0.3),
-                                          blurRadius: 8,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
+                                      color: const Color(0xFFE07A5F),
+                                      borderRadius: BorderRadius.circular(6),
                                     ),
                                     child: const Icon(
-                                      Icons.arrow_upward_rounded,
+                                      Icons.arrow_upward,
                                       color: Colors.white,
-                                      size: 20,
+                                      size: 16,
                                     ),
                                   ),
                                 ),
@@ -548,39 +455,148 @@ class _WelcomeViewState extends State<WelcomeView> {
                       ),
                     ),
 
-                    const SizedBox(height: 32),
-
-                    // 快捷操作提示
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      decoration: BoxDecoration(
-                        color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: isDark ? const Color(0xFF262626) : const Color(0xFFE5E5E5),
+                    // MCP 菜单弹出层
+                    if (_showMcpMenu)
+                      Container(
+                        width: 520,
+                        margin: const EdgeInsets.only(top: 4),
+                        decoration: BoxDecoration(
+                          color: cardColor,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: borderColor),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.08),
+                              blurRadius: 24,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // 搜索框
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(color: borderColor),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.search, size: 18, color: hintColor),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: TextField(
+                                      style: TextStyle(fontSize: 14, color: textColor),
+                                      decoration: InputDecoration(
+                                        hintText: 'Search menu',
+                                        hintStyle: TextStyle(color: hintColor, fontSize: 14),
+                                        border: InputBorder.none,
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.zero,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // 菜单项
+                            _McpMenuItem(
+                              icon: Icons.edit_note_outlined,
+                              title: 'Use style',
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.lightbulb_outline,
+                              title: 'Extended thinking',
+                              subtitle: '3 remaining until Dec 9',
+                              hasToggle: true,
+                              toggleValue: false,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.public,
+                              title: 'Web search',
+                              hasToggle: true,
+                              toggleValue: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.grid_4x4,
+                              iconColor: const Color(0xFF9333EA),
+                              title: 'Context7',
+                              hasToggle: true,
+                              toggleValue: true,
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.circle,
+                              iconColor: const Color(0xFFF97316),
+                              title: 'Control Chrome',
+                              hasToggle: true,
+                              toggleValue: true,
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.terminal,
+                              title: 'Control your Mac',
+                              hasToggle: true,
+                              toggleValue: true,
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.square_rounded,
+                              iconColor: const Color(0xFFEF4444),
+                              title: 'PDF Tools - Analyze, Extract, ...',
+                              hasToggle: true,
+                              toggleValue: true,
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.code,
+                              title: 'videmcpServer',
+                              hasToggle: true,
+                              toggleValue: true,
+                              hasArrow: true,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                              child: Divider(color: borderColor, height: 1),
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.add,
+                              title: 'Add connectors',
+                              badge: 'PRO',
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            _McpMenuItem(
+                              icon: Icons.settings_outlined,
+                              title: 'Manage connectors',
+                              onTap: widget.onOpenMcpSettings,
+                              textColor: textColor,
+                              hintColor: hintColor,
+                            ),
+                            const SizedBox(height: 8),
+                          ],
                         ),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            _useCustomDir ? Icons.folder_rounded : Icons.info_outline_rounded,
-                            size: 16,
-                            color: isDark ? const Color(0xFF888888) : const Color(0xFF999999),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            _useCustomDir
-                                ? 'Working in custom directory'
-                                : 'Sessions saved in ~/.deepclaude',
-                            style: TextStyle(
-                              color: isDark ? const Color(0xFF888888) : const Color(0xFF666666),
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -673,77 +689,192 @@ class _WelcomeViewState extends State<WelcomeView> {
   }
 }
 
-/// 工具按钮 - TDesign 风格
-class _ToolButton extends StatefulWidget {
-  final IconData icon;
-  final String tooltip;
+/// Claude 风格图标按钮
+class _ClaudeIconButton extends StatefulWidget {
+  final Widget child;
   final VoidCallback onTap;
-  final bool isSelected;
-  final bool isHighlighted;
 
-  const _ToolButton({
-    required this.icon,
-    required this.tooltip,
+  const _ClaudeIconButton({
+    required this.child,
     required this.onTap,
-    this.isSelected = false,
-    this.isHighlighted = false,
   });
 
   @override
-  State<_ToolButton> createState() => _ToolButtonState();
+  State<_ClaudeIconButton> createState() => _ClaudeIconButtonState();
 }
 
-class _ToolButtonState extends State<_ToolButton> {
+class _ClaudeIconButtonState extends State<_ClaudeIconButton> {
   bool _isHovered = false;
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final accentColor = Theme.of(context).colorScheme.primary;
-    
-    Color bgColor;
-    Color iconColor;
-    
-    if (widget.isSelected) {
-      bgColor = accentColor.withOpacity(0.1);
-      iconColor = accentColor;
-    } else if (widget.isHighlighted) {
-      bgColor = const Color(0xFFED7B2F).withOpacity(0.1);
-      iconColor = const Color(0xFFED7B2F);
-    } else if (_isHovered) {
-      bgColor = isDark ? const Color(0xFF333333) : const Color(0xFFF0F0F0);
-      iconColor = isDark ? const Color(0xFFCCCCCC) : const Color(0xFF666666);
-    } else {
-      bgColor = Colors.transparent;
-      iconColor = isDark ? const Color(0xFF888888) : const Color(0xFF999999);
-    }
+    final hoverColor = isDark ? const Color(0xFF3A3734) : const Color(0xFFEAE6E0);
 
-    return Tooltip(
-      message: widget.tooltip,
-      child: MouseRegion(
-        onEnter: (_) => setState(() => _isHovered = true),
-        onExit: (_) => setState(() => _isHovered = false),
-        child: GestureDetector(
-          onTap: widget.onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: bgColor,
-              borderRadius: BorderRadius.circular(10),
-              border: widget.isSelected || widget.isHighlighted
-                  ? Border.all(
-                      color: (widget.isSelected ? accentColor : const Color(0xFFED7B2F)).withOpacity(0.3),
-                      width: 1,
-                    )
-                  : null,
-            ),
-            child: Icon(
-              widget.icon,
-              size: 18,
-              color: iconColor,
-            ),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: 32,
+          height: 32,
+          decoration: BoxDecoration(
+            color: _isHovered ? hoverColor : Colors.transparent,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Center(child: widget.child),
+        ),
+      ),
+    );
+  }
+}
+
+/// MCP 菜单项
+class _McpMenuItem extends StatefulWidget {
+  final IconData icon;
+  final Color? iconColor;
+  final String title;
+  final String? subtitle;
+  final String? badge;
+  final bool hasArrow;
+  final bool hasToggle;
+  final bool toggleValue;
+  final VoidCallback? onTap;
+  final Color textColor;
+  final Color hintColor;
+
+  const _McpMenuItem({
+    required this.icon,
+    this.iconColor,
+    required this.title,
+    this.subtitle,
+    this.badge,
+    this.hasArrow = false,
+    this.hasToggle = false,
+    this.toggleValue = false,
+    this.onTap,
+    required this.textColor,
+    required this.hintColor,
+  });
+
+  @override
+  State<_McpMenuItem> createState() => _McpMenuItemState();
+}
+
+class _McpMenuItemState extends State<_McpMenuItem> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final hoverColor = isDark ? const Color(0xFF3A3734) : const Color(0xFFF5F1EB);
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          color: _isHovered ? hoverColor : Colors.transparent,
+          child: Row(
+            children: [
+              Icon(
+                widget.icon,
+                size: 18,
+                color: widget.iconColor ?? widget.hintColor,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: widget.textColor,
+                          ),
+                        ),
+                        if (widget.badge != null) ...[
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF0EA5E9).withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              widget.badge!,
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF0EA5E9),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                    if (widget.subtitle != null)
+                      Text(
+                        widget.subtitle!,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: widget.hintColor,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              if (widget.hasToggle)
+                _ClaudeToggle(value: widget.toggleValue),
+              if (widget.hasArrow)
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Icon(
+                    Icons.chevron_right,
+                    size: 18,
+                    color: widget.hintColor,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Claude 风格开关
+class _ClaudeToggle extends StatelessWidget {
+  final bool value;
+
+  const _ClaudeToggle({required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40,
+      height: 22,
+      decoration: BoxDecoration(
+        color: value ? const Color(0xFF0EA5E9) : const Color(0xFFE5E0D8),
+        borderRadius: BorderRadius.circular(11),
+      ),
+      child: AnimatedAlign(
+        duration: const Duration(milliseconds: 150),
+        alignment: value ? Alignment.centerRight : Alignment.centerLeft,
+        child: Container(
+          width: 18,
+          height: 18,
+          margin: const EdgeInsets.symmetric(horizontal: 2),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
           ),
         ),
       ),
@@ -882,7 +1013,7 @@ class _NewConversationDialogState extends State<NewConversationDialog> {
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    'Make sure Claude Code CLI is installed:\nnpm install -g @anthropics/claude-code',
+                    'Make sure DeepClaude CLI is installed:\nnpm install -g @anthropics/claude-code',
                     style: TextStyle(
                       color: isDark ? const Color(0xFF88AADD) : const Color(0xFF0052D9),
                       fontSize: 12,

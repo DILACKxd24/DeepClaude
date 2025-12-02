@@ -698,7 +698,7 @@ class _SidebarState extends State<Sidebar> {
           children: [
             Text('Version 1.0.0'),
             SizedBox(height: 8),
-            Text('A desktop client for Claude Code via ACP protocol.'),
+            Text('A desktop client for DeepClaude via ACP protocol.'),
             SizedBox(height: 16),
             Text('Built with Flutter ❤️'),
           ],
@@ -1202,7 +1202,7 @@ class _ProjectConversationItemState extends State<_ProjectConversationItem> {
   }
 }
 
-/// 新建聊天按钮 - TDesign 风格
+/// 新建聊天按钮 - Claude 风格
 class _NewChatButton extends StatefulWidget {
   final VoidCallback onTap;
 
@@ -1218,7 +1218,10 @@ class _NewChatButtonState extends State<_NewChatButton> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final accentColor = Theme.of(context).colorScheme.primary;
+    // Claude 风格的棕色/橙色
+    const brownColor = Color(0xFFD97757);
+    final textColor = isDark ? const Color(0xFFE8E4DE) : const Color(0xFF3D3929);
+    final hoverBg = isDark ? const Color(0xFF3A3734) : const Color(0xFFEAE6E0);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -1227,61 +1230,25 @@ class _NewChatButtonState extends State<_NewChatButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: _isHovered
-                  ? [accentColor, accentColor.withOpacity(0.85)]
-                  : [accentColor.withOpacity(0.9), accentColor.withOpacity(0.75)],
-            ),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: accentColor.withOpacity(_isHovered ? 0.4 : 0.25),
-                blurRadius: _isHovered ? 12 : 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
+            color: _isHovered ? hoverBg : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
             children: [
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: const Icon(
-                  Icons.add_rounded,
-                  size: 16,
-                  color: Colors.white,
-                ),
+              Icon(
+                Icons.add,
+                size: 18,
+                color: brownColor,
               ),
               const SizedBox(width: 10),
-              const Text(
-                'New Chat',
+              Text(
+                'New chat',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: textColor,
                   fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const Spacer(),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  '⌘N',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

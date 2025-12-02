@@ -287,7 +287,7 @@ class ChatProvider extends ChangeNotifier {
       _error = '创建会话失败: $e';
       _addMessage(ChatMessage(
         type: MessageType.system,
-        content: '❌ 连接失败: $e\n\n请确保已安装 Claude Code CLI:\nnpm install -g @anthropics/claude-code',
+        content: '❌ 连接失败: $e\n\n请确保已安装 DeepClaude CLI:\nnpm install -g @anthropics/claude-code',
       ));
     } finally {
       _isLoading = false;
@@ -308,7 +308,7 @@ class ChatProvider extends ChangeNotifier {
       _error = '创建会话失败: $e';
       _addMessage(ChatMessage(
         type: MessageType.system,
-        content: '❌ 连接失败: $e\n\n请确保已安装 Claude Code CLI:\nnpm install -g @anthropics/claude-code',
+        content: '❌ 连接失败: $e\n\n请确保已安装 DeepClaude CLI:\nnpm install -g @anthropics/claude-code',
       ));
     } finally {
       _isLoading = false;
@@ -340,7 +340,7 @@ class ChatProvider extends ChangeNotifier {
     // 添加系统消息
     _addMessage(ChatMessage(
       type: MessageType.system,
-      content: '✅ 已连接到 Claude Code\n📁 工作目录: $workingDir',
+      content: '✅ 已连接到 DeepClaude\n📁 工作目录: $workingDir',
     ));
 
     await _saveCurrentConversation();
